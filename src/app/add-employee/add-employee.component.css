@@ -28,11 +28,11 @@
 
 .row-content {
     display: flex;
+    margin-bottom: 20px;
 }
 
 .label {
     min-width: 140px;
-    margin-bottom: 20px;
 }
 
 label {
@@ -46,7 +46,6 @@ label {
     opacity: 1;
     font-family: Roboto;
     margin-right: 15px;
-    margin-bottom: 50px;
 }
 
 .example-full-width {
@@ -72,7 +71,7 @@ label {
 }
 
 .salary-input {
-    width: 500px;
+    width: 100%;
 }
 
 select {

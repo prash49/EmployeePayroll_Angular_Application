@@ -31,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatCheckboxModule,
     MatSliderModule,
     MatDatepickerModule,
-    MatButtonModule, FormsModule, ReactiveFormsModule, MatDialogModule, HttpClientModule
+    MatButtonModule, FormsModule, ReactiveFormsModule, MatDialogModule, 
+    HttpClientModule
   ],
   providers: [
     {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +15,13 @@ export class HttpServiceService {
 
   getEmployeeData(): Observable<any> {
     return this.httpClient.get(this.baseUrl + "/get");
+  }
+
+  addEmployeeData(body: any): Observable<any> {
+    return this.httpClient.post(this.baseUrl+"/create", body);
+  }
+
+  deleteEmployeeData(id: any): Observable<any> {
+    return this.httpClient.delete(this.baseUrl+"/delete/"+id);
   }
 }

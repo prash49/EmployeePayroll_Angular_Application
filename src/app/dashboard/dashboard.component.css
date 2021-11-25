@@ -11,7 +11,7 @@
     color: #42515f;
     opacity: 1;
     width: 63%;
-    border: 10px;
+    border-radius: 20px;
 }
 
 .emp-count {
@@ -82,7 +82,7 @@ th {
     color: #ffffff;
     text-transform: uppercase;
     opacity: 1;
-    border: 0px solid #dddddd;
+    border-radius: 6px solid #dddddd;
 }
 
 tr:not(:first-child) {
@@ -121,4 +121,8 @@ td img {
     display: inline-block;
     font-weight: 300;
     margin-bottom: 8px;
+}
+
+#display {
+    border-radius: 10px;
 }
