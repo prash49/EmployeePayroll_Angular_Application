@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEmployeeComponent } from '../add-employee/add-employee.component';
+
 import { HttpServiceService } from '../services/http-service.service';
+import {Router} from '@angular/router'; 
+
 
 @Component({
   selector: 'app-dashboard',
@@ -9,11 +12,11 @@ import { HttpServiceService } from '../services/http-service.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  // employeepayrollList: any;
+  
   employeeDetails: any;
-  employeeCount: number = 10;
+  employeeCount: number;
 
-  constructor(public dialog: MatDialog, private httpService: HttpServiceService) { }
+  constructor(public dialog: MatDialog, private httpService: HttpServiceService, private router: Router) { }
 
 
  
@@ -25,7 +28,7 @@ export class DashboardComponent implements OnInit {
   // }
 
  
-  // remove(i: number) {
+  // delete(i: number) {
   //   console.log(i);
   //   console.log(this.employeepayrollList);
   //   if (this.employeepayrollList !== null) {
@@ -49,13 +52,40 @@ export class DashboardComponent implements OnInit {
   // }
 
   ngOnInit(): void {
-    this.httpService.getEmployeeData().subscribe(data=>{
-      this.employeeDetails = data.data;
+    
+  this.loadData(); 
+  }
+
+  loadData(): void {
+
+    this.httpService.getEmployeeData().subscribe(response=>{
+      this.employeeDetails = response.data;
       this.employeeCount = this.employeeDetails.length;
       console.log(this.employeeDetails);
     });
+    
     //console.log(this.httpService.getEmployeeData);
   }
 
 
-}
+  delete(id: number) {
+    this.httpService.deleteEmployeeData(id).subscribe(data=> {
+      console.log(data.data);
+      this.ngOnInit();      
+    });
+  }
+
+  update(employee) {
+    console.log(employee);
+    const dialogRef = this.dialog.open(AddEmployeeComponent, {
+      data: employee
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.ngOnInit();
+    });
+    this.router.navigate(['']);
+
+    }
+  }

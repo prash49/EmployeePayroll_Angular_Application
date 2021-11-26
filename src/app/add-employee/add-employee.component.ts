@@ -53,22 +53,22 @@ export class AddEmployeeComponent implements OnInit {
   // }
 
 
-  constructor(private formBuilder: FormBuilder,
-    private httpService: HttpServiceService ,private router: Router) {
+  constructor(private formBuilder: FormBuilder,  public dialogRef: MatDialogRef<AddEmployeeComponent>,
+    private httpService: HttpServiceService ,private router: Router,  @Inject(MAT_DIALOG_DATA) public data: any,) {
      
     this.employeeFormGroup = this.formBuilder.group({
-      name: new FormControl(''),
-      profilePic: new FormControl(''),
-      gender: new FormControl(''),
-      department: this.formBuilder.array([], [Validators.required]),
-      salary: new FormControl(''),
-      startDate: new FormControl(''),
-      note: new FormControl('') 
+      name: new FormControl('', [Validators.required, Validators.pattern("^[A-Z][a-zA-z\\s]{2,}$")]),
+      profilePic: new FormControl('' ,Validators.required),
+      gender: new FormControl('', Validators.required),
+      departments: this.formBuilder.array([], [Validators.required]),
+      salary: new FormControl('', Validators.required),
+      startDate: new FormControl('', Validators.required),
+      note: new FormControl('', Validators.required) 
     });
   }
 
   onCheckboxChange(event: MatCheckboxChange) {
-    const department: FormArray = this.employeeFormGroup.get('department') as FormArray;
+    const department: FormArray = this.employeeFormGroup.get('departments') as FormArray;
 
     if (event.checked) {
       department.push(new FormControl(event.source.value));
@@ -79,8 +79,6 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   
-
-
   salaryOutput: number = 40000;
   updateSetting(event) {
     this.salaryOutput = event.value;
@@ -135,16 +133,40 @@ export class AddEmployeeComponent implements OnInit {
 
   
   ngOnInit(): void {
+    
+    console.log(this.data);
+    if(this.data!=null){
+      this.employeeFormGroup.patchValue({
+        name: this.data.name,
+        profilePic: this.data.profilePic,
+        gender: this.data.gender,
+        salary:this.data.salary,
+        note: this.data.note,
+        departments: this.data.departments,
+      
+      });
+    }
   }
 
   onSubmit(): void{
-   
-      this.httpService.addEmployeeData(this.employeeFormGroup.value).subscribe(response=> {
-        console.log(response);
-         localStorage.setItem('token',response.data);
-        this.router.navigate(['']);
-      });
-    this.router.navigate(['']);
-  }
 
+    if(this.data.employeeId!= undefined){
+      this.httpService.updateEmployeeData(this.data.employeeId,this.employeeFormGroup.value).subscribe(response=> {
+        console.log(response);
+        console.log(this.employeeFormGroup.value);    
+      });
+      
+    }  
+    else {
+    this.httpService.addEmployeeData(this.employeeFormGroup.value).subscribe(response=> {
+      console.log(response);
+      console.log(this.employeeFormGroup.value);
+     
+    });
+    this.router.navigate(['']);
+    
+  }
+  this.router.navigate(['']);
+  this.dialogRef.close();
+  }
 }

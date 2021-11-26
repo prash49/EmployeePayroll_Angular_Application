@@ -46,7 +46,7 @@
         </div>
 
         <div class="row-content">
-            <label class="label text" for="department">Department</label>
+            <label class="label text" for="departments">Department</label>
             <div *ngFor="let department of departments">
                 <mat-checkbox #checkbox class="checkbox" type="checkbox" color="primary" [value]="department.value" (change)="onCheckboxChange($event)">
                     <label class="text">{{department.name}}</label>

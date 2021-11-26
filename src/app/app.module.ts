@@ -32,7 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatSliderModule,
     MatDatepickerModule,
     MatButtonModule, FormsModule, ReactiveFormsModule, MatDialogModule, 
-    HttpClientModule
+    HttpClientModule 
   ],
   providers: [
     {

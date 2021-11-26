@@ -27,7 +27,7 @@
                 <td>{{employee.gender}}</td>
                 <td>
                     <div class="dept-label">
-                        {{employee.department}}
+                        {{employee.departments}}
                     </div>
                 </td>
                 <td>&#8377; {{employee.salary}}</td>
@@ -35,10 +35,10 @@
                 <td>{{employee.note}}</td>
 
                 <td>
-                    <!-- (click)="remove()"
-                    (click)="update()"  -->
-                    <img src="../assets/icons/delete-black-18dp.svg" alt="delete">
-                    <img src="../assets/icons/create-black-18dp.svg" alt="edit">
+
+
+                    <img (click)="delete(employee.employeeId)" src="../assets/icons/delete-black-18dp.svg" alt="delete">
+                    <img (click)="update(employee)" src="../assets/icons/create-black-18dp.svg" alt="edit">
                 </td>
             </tr>
         </table>
