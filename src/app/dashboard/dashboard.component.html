@@ -23,20 +23,18 @@
                 <td>
                     <img class="profile" src={{employee.profilePic}} alt="">
                 </td>
-                <td>{{employee.name}}</td>
-                <td>{{employee.gender}}</td>
+                <td>{{employee.name | uppercase}}</td>
+                <td>{{employee.gender | uppercase}}</td>
                 <td>
                     <div class="dept-label">
                         {{employee.departments}}
                     </div>
                 </td>
-                <td>&#8377; {{employee.salary}}</td>
-                <td>{{employee.startDate}}</td>
+                <td> {{employee.salary | currency : 'INR'}}</td>
+                <td>{{employee.startDate | date : 'dd MMMM yyyy'}}</td>
                 <td>{{employee.note}}</td>
 
                 <td>
-
-
                     <img (click)="delete(employee.employeeId)" src="../assets/icons/delete-black-18dp.svg" alt="delete">
                     <img (click)="update(employee)" src="../assets/icons/create-black-18dp.svg" alt="edit">
                 </td>

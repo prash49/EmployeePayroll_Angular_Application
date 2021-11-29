@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
+import { MatNativeDateModule, NativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatSliderModule,
     MatDatepickerModule,
     MatButtonModule, FormsModule, ReactiveFormsModule, MatDialogModule, 
-    HttpClientModule 
+    HttpClientModule,
+    MatNativeDateModule,
+    MatDatepickerModule
+
   ],
   providers: [
     {

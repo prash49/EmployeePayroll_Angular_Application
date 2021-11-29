@@ -18,39 +18,6 @@ export class DashboardComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private httpService: HttpServiceService, private router: Router) { }
 
-
- 
-  // ngOnInit(): void {
-  //   this.employeepayrollList = localStorage.getItem('EmployeePayrollList') ?
-  //     JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
-  //   this.employeeCount = this.employeepayrollList.length;
-
-  // }
-
- 
-  // delete(i: number) {
-  //   console.log(i);
-  //   console.log(this.employeepayrollList);
-  //   if (this.employeepayrollList !== null) {
-  //     const empList = this.employeepayrollList;
-  //     empList.splice(i, 1);
-  //     localStorage.setItem('EmployeePayrollList', JSON.stringify(empList));
-  //     this.employeeCount = this.employeepayrollList.length;
-  //   }
-  //   this.ngOnInit();
-  // }
-
-
-  // update(i: number) {
-  //   const dialogRef = this.dialog.open(AddEmployeeComponent, {
-  //     data: i
-  //   });
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log(result);
-  //     this.ngOnInit();
-  //   })
-  // }
-
   ngOnInit(): void {
     
   this.loadData(); 
@@ -64,7 +31,7 @@ export class DashboardComponent implements OnInit {
       console.log(this.employeeDetails);
     });
     
-    //console.log(this.httpService.getEmployeeData);
+  
   }
 
 
@@ -85,7 +52,7 @@ export class DashboardComponent implements OnInit {
       console.log(result);
       this.ngOnInit();
     });
-    this.router.navigate(['']);
+    
 
     }
   }

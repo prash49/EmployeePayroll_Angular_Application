@@ -11,7 +11,6 @@
     color: #42515f;
     opacity: 1;
     width: 63%;
-    border-radius: 20px;
 }
 
 .emp-count {
@@ -75,14 +74,13 @@ th {
 
 th {
     background: #42515f;
-    border-radius: 3px 3px 0px 0px;
+    border-radius: 10px 10px 10px 10px;
     text-align: left;
     font: normal normal medium 18px/24px Roboto;
-    letter-spacing: 0px;
     color: #ffffff;
     text-transform: uppercase;
     opacity: 1;
-    border-radius: 6px solid #dddddd;
+    text-align: center;
 }
 
 tr:not(:first-child) {
@@ -93,18 +91,14 @@ tr:not(:first-child) {
 
 td {
     font: normal normal normal 14px/21px Roboto;
-    letter-spacing: 0px;
     color: #3d3d3d;
     opacity: 1;
+    text-align: center;
 }
 
 td:first-child {
     display: flex;
     align-items: center;
-}
-
-td img:first-child {
-    margin-right: 10px;
 }
 
 td img {
